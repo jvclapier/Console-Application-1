@@ -25,7 +25,7 @@ namespace Console_Application_1
         public int differential;
         public int points;
         
-        //
+        //create list of games for each team
         List<Game> myGames = new List<Game>();
         
         //create constructor to receive  the name and points values
@@ -39,8 +39,11 @@ namespace Console_Application_1
     //create game class that is an attribute of SoccerTeam
     public class Game
     {
-        public int pointsFor;
-        public int pointsAgainst;
+        public int homePoints;
+        public int awayPoints;
+
+        //getters and setters
+        public int MyProperty { get; set; }
     }
 
     class Program
@@ -63,8 +66,10 @@ namespace Console_Application_1
             string userInput, teamName;
             int iPoints;
             int iPosition = 1;
+            bool isValid = false;
             
             //prompt user for input and convert int to string
+            for()
             Console.Write("How many teams? ");
             iTeams = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine();
