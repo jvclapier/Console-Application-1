@@ -62,23 +62,38 @@ namespace Console_Application_1
         static void Main(string[] args)
         {
             //declare variables
-            int iTeams;
+            int iNumofTeams = 0;
             string userInput, teamName;
             int iPoints;
             int iPosition = 1;
             bool isValid = false;
             
-            //prompt user for input and convert int to string
-            for()
-            Console.Write("How many teams? ");
-            iTeams = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine();
+            //run for loop to catch an invalid entries
+            for (isValid = false; isValid == false;)
+            {
+                try
+                {
+                    //prompt user for input and convert int to string
+                    Console.Write("How many teams? ");
+                    iNumofTeams = Convert.ToInt32(Console.ReadLine());
+                    isValid = true;
+                }
+                catch
+                {
+                    Console.WriteLine("\nPlease enter a valid integer.\n");
+                    isValid = false;
+                }
+                finally
+                {
+
+                }
+            }
 
             //create soccer teams list
             List<SoccerTeam> TeamsList = new List<SoccerTeam>();
 
             //prompt user for team names and create soccer team objects
-            for (int iCount = 1; iCount <= iTeams; iCount++)
+            for (int iCount = 1; iCount <= iNumofTeams; iCount++)
             {
                 Console.Write("\nEnter Team " + iCount + "'s name: ");
                 userInput = Console.ReadLine();
@@ -103,7 +118,7 @@ namespace Console_Application_1
             foreach(SoccerTeam team in sortedTeams){
                 string sPosition = Convert.ToString(iPosition);
                 string sPoints = Convert.ToString(team.points);
-                Console.Write(sPosition.PadRight(15, ' ') + team.name.PadRight(25, ' ') + sPoints);
+                Console.Write("\n" + sPosition.PadRight(15, ' ') + team.name.PadRight(25, ' ') + sPoints);
                 iPosition++;
             }
             Console.ReadKey();
