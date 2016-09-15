@@ -1,4 +1,14 @@
-﻿using Console_Application_1;
+﻿/*Description: Write a program that prompts the user to enter 
+ * in the number of teams competing in an olympic soccer tournament.
+ * and sort and display the results. 
+ * 
+ * Author: Jess Clapier
+ * Date Created: Sept. 14, 2016
+ * 
+ * */
+
+
+using Console_Application_1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +21,10 @@ namespace Console_Application_1
     public class Team
     {
         //attributes
-        public string name;
+        public string name;      
         public int wins;
-        public int loss;
+        public int losses;
+
     }
 
     //create SoccerTeam subclass to inherit from the Team class
@@ -49,11 +60,11 @@ namespace Console_Application_1
     //create game class that is an attribute of SoccerTeam
     public class Game
     {
-        private int homePoints;
-        private int awayPoints;
-        private string winner;
-        private string sHomeTeam;
-        private string sAwayTeam;
+        public int homePoints;
+        public int awayPoints;
+        public string winner;
+        public string sHomeTeam;
+        public string sAwayTeam;
 
         //constructor
         public Game(string hometeam, string awayteam, string winner){
@@ -66,6 +77,7 @@ namespace Console_Application_1
         public Game(){
 
         }
+
     }
 
     class Program
