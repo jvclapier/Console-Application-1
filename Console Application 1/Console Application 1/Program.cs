@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Console_Application_1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,23 +28,46 @@ namespace Console_Application_1
         
         //create list of games for each team
         List<Game> myGames = new List<Game>();
-        
+       
         //create constructor to receive  the name and points values
         public SoccerTeam (string name, int points){
             this.name = name;
             this.points = points;
         }
 
+        //default constructor
+        public SoccerTeam(){
+
+        }
+
+        public void addGame(string hometeam, string awayteam, string winner){
+            myGames.Add(new Game(hometeam, awayteam, winner));
+        }
+
     }
 
     //create game class that is an attribute of SoccerTeam
-    public class Game
+    private class Game
     {
-        public int homePoints;
-        public int awayPoints;
+        private int homePoints;
+        private int awayPoints;
+        private string winner;
+        private string sHomeTeam;
+        private string sAwayTeam;
 
-        //getters and setters
-        public int MyProperty { get; set; }
+        //constructor
+        public Game(string hometeam, string awayteam, string winner){
+            this.sHomeTeam = hometeam;
+            this.sAwayTeam = awayteam;
+            this.winner = winner;
+        }
+
+        //default constructor
+        public Game(){
+
+        }
+    }
+
     }
 
     class Program
@@ -67,6 +91,7 @@ namespace Console_Application_1
             int iPoints;
             int iPosition = 1;
             bool isValid = false;
+            string sSimulateGame;
             
             //run for loop to catch an invalid entries
             for (isValid = false; isValid == false;)
@@ -120,6 +145,50 @@ namespace Console_Application_1
                 string sPoints = Convert.ToString(team.points);
                 Console.Write("\n" + sPosition.PadRight(15, ' ') + team.name.PadRight(25, ' ') + sPoints);
                 iPosition++;
+            }
+
+            //implement game class by running simulator
+            Console.Write("\n\nWould you like to simulate a game? (y/n) ");
+            sSimulateGame = Console.ReadLine();
+
+            while(sSimulateGame.Equals("y", StringComparison.InvariantCultureIgnoreCase))
+            {
+                Console.Write("\nTeam List\n");
+                Console.Write("---------\n");
+
+                //display list of teams
+                for (int iCount = 0; iCount < TeamsList.Count; iCount++) {
+                    Console.WriteLine((iCount + 1) + "   " + TeamsList[iCount].name);
+                }
+
+                Console.Write("\nSelect Team 1: ");
+                int iHomeTeam = Convert.ToInt32(Console.ReadLine());
+                string HomeTeamName = TeamsList[(iHomeTeam)].name;
+
+                Console.Write("\nSelect Team 2: ");
+                int iAwayTeam = Convert.ToInt32(Console.ReadLine());
+                string AwayTeamName = TeamsList[(iAwayTeam)].name;
+               
+                //create random number and generate score
+                Random rndScore = new Random();
+
+                int homePoints = rndScore.Next(0,10);
+                int awayPoints = rndScore.Next(0,10);
+                string winner;
+
+                    // determine winner
+                    if(homePoints >= awayPoints){
+                        winner = HomeTeamName;
+                    }
+                    else{
+                        winner = AwayTeamName;
+                    }
+
+                //create game object with selected teams my calling the add game method
+                TeamsList[(iHomeTeam-1)].addGame(HomeTeamName, AwayTeamName, winner);
+                TeamsList[(iAwayTeam-1)].addGame(HomeTeamName, AwayTeamName, winner);
+
+                TeamsList[(iHomeTeam-1)].GetType(Game)
             }
             Console.ReadKey();
         }
