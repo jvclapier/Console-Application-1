@@ -47,7 +47,7 @@ namespace Console_Application_1
     }
 
     //create game class that is an attribute of SoccerTeam
-    private class Game
+    public class Game
     {
         private int homePoints;
         private int awayPoints;
@@ -66,8 +66,6 @@ namespace Console_Application_1
         public Game(){
 
         }
-    }
-
     }
 
     class Program
@@ -133,7 +131,7 @@ namespace Console_Application_1
             }
 
             //sort list by points
-            List<SoccerTeam> sortedTeams = TeamsList.OrderByDescending(team => team.name).ToList();
+            List<SoccerTeam> sortedTeams = TeamsList.OrderByDescending(team => team.points).ToList();
 
             //output results
             Console.WriteLine("\nHere is the sorted list: \n");
@@ -163,11 +161,11 @@ namespace Console_Application_1
 
                 Console.Write("\nSelect Team 1: ");
                 int iHomeTeam = Convert.ToInt32(Console.ReadLine());
-                string HomeTeamName = TeamsList[(iHomeTeam)].name;
+                string HomeTeamName = TeamsList[(iHomeTeam-1)].name;
 
                 Console.Write("\nSelect Team 2: ");
                 int iAwayTeam = Convert.ToInt32(Console.ReadLine());
-                string AwayTeamName = TeamsList[(iAwayTeam)].name;
+                string AwayTeamName = TeamsList[(iAwayTeam-1)].name;
                
                 //create random number and generate score
                 Random rndScore = new Random();
@@ -188,8 +186,13 @@ namespace Console_Application_1
                 TeamsList[(iHomeTeam-1)].addGame(HomeTeamName, AwayTeamName, winner);
                 TeamsList[(iAwayTeam-1)].addGame(HomeTeamName, AwayTeamName, winner);
 
-                TeamsList[(iHomeTeam-1)].GetType(Game)
+                //display result
+                Console.Write("\n" + winner + " wins!\n");
+
+                Console.Write("\nPlay again? (y/n)");
+                sSimulateGame = Console.ReadLine();
             }
+
             Console.ReadKey();
         }
     }

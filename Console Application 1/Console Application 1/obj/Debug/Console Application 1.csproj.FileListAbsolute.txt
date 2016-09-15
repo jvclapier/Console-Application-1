@@ -7,3 +7,6 @@
 \\Mac\Home\Desktop\School\IS 403\Console-Application-1\Console Application 1\Console Application 1\bin\Debug\Console Application 1.exe.config
 \\Mac\Home\Desktop\School\IS 403\Console-Application-1\Console Application 1\Console Application 1\obj\Debug\Console Application 1.exe
 \\Mac\Home\Desktop\School\IS 403\Console-Application-1\Console Application 1\Console Application 1\obj\Debug\Console Application 1.pdb
+\\Mac\Home\Desktop\School\IS 403\Console-Application-1\Console Application 1\Console Application 1\bin\Debug\Console Application 1.exe
+\\Mac\Home\Desktop\School\IS 403\Console-Application-1\Console Application 1\Console Application 1\bin\Debug\Console Application 1.pdb
+\\Mac\Home\Desktop\School\IS 403\Console-Application-1\Console Application 1\Console Application 1\obj\Debug\Console Application 1.csprojResolveAssemblyReference.cache
